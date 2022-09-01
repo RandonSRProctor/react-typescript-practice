@@ -1,5 +1,32 @@
+import { useState } from "react"
+
+const users = [
+    { name: 'Sarah', age: 20 },
+    { name: 'Sarah', age: 21 },
+    { name: 'Alex', age: 20 },
+    { name: 'Michael', age: 20 },
+]
+
+
+
 const UserSearch: React.FC = () => {
-    return null
+    const [name, setName] = useState('')
+    const [user, setUser] = useState<{ name: string, age: number } | undefined>()
+
+    const onClick = () => {
+        const foundUser = users.find(entry => entry.name === name)
+        setUser(foundUser)
+    }
+
+    return <div>User Search
+        <input value={name} onChange={e => setName(e.target.value)} />
+        <button onClick={onClick} >Find User</button>
+        <div>
+            {user && user.name}
+            <br></br>
+            {user && user.age}
+        </div>
+    </div>
 }
 
 export default UserSearch
