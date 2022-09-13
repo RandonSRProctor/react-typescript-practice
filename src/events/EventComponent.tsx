@@ -5,11 +5,13 @@ const EventComponent: React.FC = () => {
         console.log(event)
     }
 
+    // This way declares the type of the argument
     const onDragStart = (event: React.DragEvent<HTMLDivElement>) => {
         console.log(`You started dragging at ${event.timeStamp}`)
     }
 
-    const onDragEnd = (event: React.DragEvent<HTMLDivElement>) => {
+    // This way declares the interface of the function, and the argument type is inferred
+    const onDragEnd: React.DragEventHandler<HTMLDivElement> = (event) => {
         console.log(`You stopped dragging at ${event.timeStamp}`)
     }
 
